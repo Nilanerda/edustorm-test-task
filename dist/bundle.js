@@ -104,7 +104,7 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./node
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\n\n//# sourceURL=webpack:///./src/javascript/app/app.js?");
+eval("let gifsMoreOptionButton = document.getElementsByClassName('gif-figure-more-info');\nfor(let i = 0; i < gifsMoreOptionButton.length; i++) {\n    gifsMoreOptionButton[i].addEventListener('click',function () {\n        this.offsetParent.offsetParent.firstElementChild.classList.add('show-element');\n    });\n}\n\ndocument.body.addEventListener('click', function(event) {\n    let gifsElement = event.target.closest(\".gif-figure-instance\");\n    let gifFigureWrapper = document.getElementsByClassName('gif-figure-wrapper');\n    if (!gifsElement) {\n        for (let item of gifFigureWrapper) {\n            item.classList.remove('show-element');\n        }\n    }\n});\n\n//# sourceURL=webpack:///./src/javascript/app/app.js?");
 
 /***/ }),
 

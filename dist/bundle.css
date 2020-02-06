@@ -443,7 +443,7 @@ header p {
   height: 100%;
   width: 100%;
   z-index: 3;
-  display: flex;
+  display: none;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.3);
   justify-content: center;
@@ -459,6 +459,9 @@ header p {
   color: white;
   text-decoration: none;
   padding: 0.6rem;
+}
+.container .gifs-output-place .gif-figure-instance .show-element {
+  display: flex;
 }
 .container .gifs-output-place .gif-figure-instance img {
   display: block;
