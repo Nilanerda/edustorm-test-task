@@ -336,4 +336,153 @@ template {
 [hidden] {
   display: none;
 }
+header {
+  border-bottom: 2px solid black;
+}
+header p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: "Ani";
+  margin: 0;
+  padding: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+}
 
+.container {
+  padding: 1.5rem 15%;
+}
+@media screen and (max-width: 576px) {
+  .container {
+    padding: 1.5rem 10%;
+  }
+}
+.container .control-panel {
+  margin-bottom: 1.5rem;
+}
+.container .control-panel form {
+  display: flex;
+  justify-content: space-between;
+}
+@media screen and (max-width: 768px) {
+  .container .control-panel form {
+    flex-direction: column;
+  }
+}
+.container .control-panel form .searching-wrapper {
+  display: inline-flex;
+}
+@media screen and (max-width: 768px) {
+  .container .control-panel form .searching-wrapper {
+    margin-bottom: 1rem;
+  }
+}
+.container .control-panel form .searching-wrapper .main-search {
+  padding: 0.6rem;
+  width: 20rem;
+}
+@media screen and (max-width: 768px) {
+  .container .control-panel form .searching-wrapper .main-search {
+    width: 100%;
+  }
+}
+.container .control-panel form .searching-wrapper .search-button {
+  background-color: black;
+  color: white;
+  padding: 0.6rem;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.container .control-panel form .refresh-button {
+  background-color: black;
+  color: white;
+  padding: 0.6rem;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.container .gifs-output-place {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(5rem, 1fr));
+  grid-auto-rows: 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+@media screen and (max-width: 768px) {
+  .container .gifs-output-place {
+    grid-template-columns: repeat(1, minmax(5rem, 1fr));
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1200px) {
+  .container .gifs-output-place {
+    grid-template-columns: repeat(2, minmax(5rem, 1fr));
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+}
+.container .gifs-output-place::before {
+  content: "";
+  width: 0;
+  padding-bottom: 100%;
+  grid-row: 1/1;
+  grid-column: 1/1;
+}
+.container .gifs-output-place > *:first-child {
+  grid-row: 1/1;
+  grid-column: 1/1;
+}
+.container .gifs-output-place .gif-figure-instance {
+  background: blue;
+  margin: 0;
+  position: relative;
+}
+.container .gifs-output-place .gif-figure-instance .gif-figure-wrapper {
+  height: 100%;
+  width: 100%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+.container .gifs-output-place .gif-figure-instance .gif-figure-wrapper .gif-size {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+.container .gifs-output-place .gif-figure-instance .gif-figure-wrapper .gif-link-to-original {
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  padding: 0.6rem;
+}
+.container .gifs-output-place .gif-figure-instance img {
+  display: block;
+  height: 100%;
+}
+.container .gifs-output-place .gif-figure-instance figcaption {
+  position: absolute;
+  width: 100%;
+  padding: 0.5rem 0;
+  bottom: 0;
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+.container .gifs-output-place .gif-figure-instance .gif-figure-more-info {
+  background-color: black;
+  color: white;
+  position: absolute;
+  bottom: 0;
+  height: 100%;
+  width: 10%;
+  right: 0;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-style: italic;
+}
