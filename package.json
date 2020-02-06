@@ -1,0 +1,21 @@
+{
+  "name": "edustorm-test",
+  "version": "1.0.0",
+  "description": "test task to Digital agency NC.G",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js",
+    "start": "webpack --watch"
+  },
+  "author": "Yana Mysyk",
+  "license": "ISC",
+  "devDependencies": {
+    "css-loader": "^3.4.2",
+    "mini-css-extract-plugin": "^0.9.0",
+    "sass": "^1.25.0",
+    "sass-loader": "^8.0.2",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
