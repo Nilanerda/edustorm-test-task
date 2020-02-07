@@ -19,6 +19,8 @@
     "webpack-cli": "^3.3.10"
   },
   "dependencies": {
-    "normalize.css": "^8.0.1"
+    "normalize.css": "^8.0.1",
+    "underscore": "^1.9.2",
+    "underscore-template-loader": "^1.0.0"
   }
 }
