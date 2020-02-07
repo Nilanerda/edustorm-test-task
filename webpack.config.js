@@ -7,9 +7,14 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'bundle.js'
     },
+    resolve: {
+        alias: {
+            '@template': path.resolve(__dirname, 'src/templates/'),
+        }
+    },
     module: {
         rules: [
-                        {
+            {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
                     {
@@ -25,15 +30,20 @@ module.exports = {
                         }
                     }
                 ]
-            }
+            },
+            {
+                test: /\.html$/,
+                loader: "underscore-template-loader",
+                options: {
+                    attributes: ['img:src', 'x-img:src']
+                }
+            },
         ]
     },
     plugins: [
-
         new MiniCssExtractPlugin({
             filename: "bundle.css"
         })
-
     ],
     mode: 'development'
 };

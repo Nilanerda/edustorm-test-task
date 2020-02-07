@@ -97,25 +97,14 @@ eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./node
 
 /***/ }),
 
-/***/ "./src/javascript/app/app.js":
-/*!***********************************!*\
-  !*** ./src/javascript/app/app.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("let gifsMoreOptionButton = document.getElementsByClassName('gif-figure-more-info');\nfor(let i = 0; i < gifsMoreOptionButton.length; i++) {\n    gifsMoreOptionButton[i].addEventListener('click',function () {\n        this.offsetParent.offsetParent.firstElementChild.classList.add('show-element');\n    });\n}\n\ndocument.body.addEventListener('click', function(event) {\n    let gifsElement = event.target.closest(\".gif-figure-instance\");\n    let gifFigureWrapper = document.getElementsByClassName('gif-figure-wrapper');\n    if (!gifsElement) {\n        for (let item of gifFigureWrapper) {\n            item.classList.remove('show-element');\n        }\n    }\n});\n\n//# sourceURL=webpack:///./src/javascript/app/app.js?");
-
-/***/ }),
-
 /***/ "./src/javascript/app/giphyApi.js":
 /*!****************************************!*\
   !*** ./src/javascript/app/giphyApi.js ***!
   \****************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-eval("const giphyApiKey = 'DJu5uArIKRj9StsjKwUuPPtiCVTvc6v6';\ndocument.addEventListener(\"DOMContentLoaded\", init);\nfunction init() {\n    document.getElementById(\"mainSearchButton\").addEventListener(\"click\", e => {\n        e.preventDefault();\n        let url = `https://api.giphy.com/v1/gifs/search?api_key=${giphyApiKey}&limit=8&q=`;\n        let searchInputValue = document.getElementById(\"mainSearch\").value.trim();\n        url = url.concat(searchInputValue);\n        fetch(url)\n            .then(response => response.json())\n            .then(content => {\n                console.log(content.data);\n                console.log(\"META\", content.meta);\n                let out = document.querySelector(\".gifs-output-place\");\n                out.innerHTML = '';\n                for(let item of content.data) {\n                    let fig = document.createElement(\"figure\");\n                    let img = document.createElement(\"img\");\n                    let fc = document.createElement(\"figcaption\");\n                    img.src = item.images.downsized.url;\n                    img.alt = item.title;\n                    fc.textContent = item.title;\n                    fig.appendChild(img);\n                    fig.appendChild(fc);\n                    out.insertAdjacentElement(\"afterbegin\", fig);\n                }\n                document.querySelector(\"#mainSearch\").value = \"\";\n            })\n    });\n}\n\n//# sourceURL=webpack:///./src/javascript/app/giphyApi.js?");
+eval("document.addEventListener(\"DOMContentLoaded\", init);\nconst giphyApiKey = 'DJu5uArIKRj9StsjKwUuPPtiCVTvc6v6';\nlet savedValue = '';\nlet startingPosition = 0;\nlet template = __webpack_require__(/*! @template/loaded-gifs.html */ \"./src/templates/loaded-gifs.html\");\n\nfunction searchImages(value) {\n    let url = `https://api.giphy.com/v1/gifs/search?api_key=${giphyApiKey}&limit=8&q=`;\n    url = url.concat(value);\n    if(savedValue === value) {\n        startingPosition += 8;\n        url = url.concat(`&offset=${startingPosition}`)\n    }\n\n    fetch(url)\n        .then(response => response.json())\n        .then(content => {\n            let insertPlace = document.querySelector(\".gifs-output-place\");\n            insertPlace.innerHTML = '';\n            for(let item of content.data) {\n                let imageContent = template({\n                    imageUrl: item.images.downsized_large.url,\n                    title: item.title,\n                    width: item.images.original.width,\n                    height: item.images.original.height,\n                    url: item.url,\n                });\n                insertPlace.insertAdjacentHTML('afterbegin', imageContent );\n\n                let gifsMoreOptionButton = document.getElementsByClassName('gif-figure-more-info');\n                for(let i = 0; i < gifsMoreOptionButton.length; i++) {\n                    gifsMoreOptionButton[i].addEventListener('click',function () {\n                        this.offsetParent.offsetParent.firstElementChild.classList.add('show-element');\n                    });\n                }\n\n                document.body.addEventListener('click', function(event) {\n                    let gifsElement = event.target.closest(\".gif-figure-instance\");\n                    let gifFigureWrapper = document.getElementsByClassName('gif-figure-wrapper');\n                    if (!gifsElement) {\n                        for (let item of gifFigureWrapper) {\n                            item.classList.remove('show-element');\n                        }\n                    }\n                });\n            }\n        })\n}\n\nfunction init() {\n    document.getElementById(\"mainSearchButton\").addEventListener(\"click\", e => {\n        e.preventDefault();\n        let searchInputValue = document.getElementById(\"mainSearch\").value.trim();\n        searchImages(searchInputValue);\n        savedValue = searchInputValue;\n    });\n    document.getElementById(\"refreshButton\").addEventListener(\"click\", e => {\n        e.preventDefault();\n        searchImages(savedValue);\n    });\n}\n\n//# sourceURL=webpack:///./src/javascript/app/giphyApi.js?");
 
 /***/ }),
 
@@ -127,7 +116,7 @@ eval("const giphyApiKey = 'DJu5uArIKRj9StsjKwUuPPtiCVTvc6v6';\ndocument.addEvent
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var normalize_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! normalize.css */ \"./node_modules/normalize.css/normalize.css\");\n/* harmony import */ var normalize_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(normalize_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/styles.scss */ \"./src/scss/styles.scss\");\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_scss_styles_scss__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _javascript_app_giphyApi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../javascript/app/giphyApi */ \"./src/javascript/app/giphyApi.js\");\n/* harmony import */ var _javascript_app_giphyApi__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_javascript_app_giphyApi__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _app_app_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app/app.js */ \"./src/javascript/app/app.js\");\n/* harmony import */ var _app_app_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_app_app_js__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\n\n//# sourceURL=webpack:///./src/javascript/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var normalize_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! normalize.css */ \"./node_modules/normalize.css/normalize.css\");\n/* harmony import */ var normalize_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(normalize_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/styles.scss */ \"./src/scss/styles.scss\");\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_scss_styles_scss__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _javascript_app_giphyApi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../javascript/app/giphyApi */ \"./src/javascript/app/giphyApi.js\");\n/* harmony import */ var _javascript_app_giphyApi__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_javascript_app_giphyApi__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\n//# sourceURL=webpack:///./src/javascript/index.js?");
 
 /***/ }),
 
@@ -139,6 +128,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var norm
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("// extracted by mini-css-extract-plugin\n\n//# sourceURL=webpack:///./src/scss/styles.scss?");
+
+/***/ }),
+
+/***/ "./src/templates/loaded-gifs.html":
+/*!****************************************!*\
+  !*** ./src/templates/loaded-gifs.html ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = function(obj){\nvar __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};\nwith(obj||{}){\n__p+='<figure class=\"gif-figure-instance\">\\n    <div class=\"gif-figure-wrapper\">\\n        <span class=\"gif-size\">'+\n((__t=(width))==null?'':__t)+\n'x'+\n((__t=(height))==null?'':__t)+\n'</span>\\n        <a href=\"'+\n((__t=(url))==null?'':__t)+\n'\" class=\"gif-link-to-original\">Original</a>\\n    </div>\\n    <div class=\"gif-image-wrapper\">\\n        <img src=\"'+\n((__t=( imageUrl ))==null?'':__t)+\n'\" alt=\"'+\n((__t=( title ))==null?'':__t)+\n'\">\\n    </div>\\n    <figcaption>\\n        <div>'+\n((__t=(title))==null?'':__t)+\n'</div>\\n        <button class=\"gif-figure-more-info\">i</button>\\n    </figcaption>\\n</figure>';\n}\nreturn __p;\n};\n\n\n//# sourceURL=webpack:///./src/templates/loaded-gifs.html?");
 
 /***/ })
 
