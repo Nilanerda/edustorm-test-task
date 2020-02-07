@@ -108,6 +108,17 @@ eval("let gifsMoreOptionButton = document.getElementsByClassName('gif-figure-mor
 
 /***/ }),
 
+/***/ "./src/javascript/app/giphyApi.js":
+/*!****************************************!*\
+  !*** ./src/javascript/app/giphyApi.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("const giphyApiKey = 'DJu5uArIKRj9StsjKwUuPPtiCVTvc6v6';\ndocument.addEventListener(\"DOMContentLoaded\", init);\nfunction init() {\n    document.getElementById(\"mainSearchButton\").addEventListener(\"click\", e => {\n        e.preventDefault();\n        let url = `https://api.giphy.com/v1/gifs/search?api_key=${giphyApiKey}&limit=8&q=`;\n        let searchInputValue = document.getElementById(\"mainSearch\").value.trim();\n        url = url.concat(searchInputValue);\n        fetch(url)\n            .then(response => response.json())\n            .then(content => {\n                console.log(content.data);\n                console.log(\"META\", content.meta);\n                let out = document.querySelector(\".gifs-output-place\");\n                out.innerHTML = '';\n                for(let item of content.data) {\n                    let fig = document.createElement(\"figure\");\n                    let img = document.createElement(\"img\");\n                    let fc = document.createElement(\"figcaption\");\n                    img.src = item.images.downsized.url;\n                    img.alt = item.title;\n                    fc.textContent = item.title;\n                    fig.appendChild(img);\n                    fig.appendChild(fc);\n                    out.insertAdjacentElement(\"afterbegin\", fig);\n                }\n                document.querySelector(\"#mainSearch\").value = \"\";\n            })\n    });\n}\n\n//# sourceURL=webpack:///./src/javascript/app/giphyApi.js?");
+
+/***/ }),
+
 /***/ "./src/javascript/index.js":
 /*!*********************************!*\
   !*** ./src/javascript/index.js ***!
@@ -116,7 +127,7 @@ eval("let gifsMoreOptionButton = document.getElementsByClassName('gif-figure-mor
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var normalize_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! normalize.css */ \"./node_modules/normalize.css/normalize.css\");\n/* harmony import */ var normalize_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(normalize_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/styles.scss */ \"./src/scss/styles.scss\");\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_scss_styles_scss__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _app_app_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/app.js */ \"./src/javascript/app/app.js\");\n/* harmony import */ var _app_app_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_app_app_js__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\n//# sourceURL=webpack:///./src/javascript/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var normalize_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! normalize.css */ \"./node_modules/normalize.css/normalize.css\");\n/* harmony import */ var normalize_css__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(normalize_css__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../scss/styles.scss */ \"./src/scss/styles.scss\");\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_scss_styles_scss__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _javascript_app_giphyApi__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../javascript/app/giphyApi */ \"./src/javascript/app/giphyApi.js\");\n/* harmony import */ var _javascript_app_giphyApi__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_javascript_app_giphyApi__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _app_app_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app/app.js */ \"./src/javascript/app/app.js\");\n/* harmony import */ var _app_app_js__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_app_app_js__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\n\n//# sourceURL=webpack:///./src/javascript/index.js?");
 
 /***/ }),
 
