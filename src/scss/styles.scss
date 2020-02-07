@@ -138,10 +138,15 @@ header {
             figcaption {
                 position: absolute;
                 width: 100%;
-                padding: 0.5rem 0;
                 bottom: 0;
-                text-align: center;
                 @include black-white-elements;
+                div {
+                    text-align: center;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    padding: 0.5rem;
+                }
             }
             .gif-figure-more-info {
                 @include black-white-elements;

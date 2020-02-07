@@ -476,11 +476,16 @@ header p {
 .container .gifs-output-place .gif-figure-instance figcaption {
   position: absolute;
   width: 100%;
-  padding: 0.5rem 0;
   bottom: 0;
-  text-align: center;
   background-color: black;
   color: white;
+}
+.container .gifs-output-place .gif-figure-instance figcaption div {
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.5rem;
 }
 .container .gifs-output-place .gif-figure-instance .gif-figure-more-info {
   background-color: black;
