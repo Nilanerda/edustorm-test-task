@@ -124,10 +124,17 @@ header {
             .show-element {
                 display: flex;
             }
-            img {
-                display: block;
+            .gif-image-wrapper {
+                position: relative;
                 height: 100%;
+                img {
+                    display: block;
+                    height: 100%;
+                    width: 100%;
+                    position: absolute;
+                }
             }
+
             figcaption {
                 position: absolute;
                 width: 100%;
